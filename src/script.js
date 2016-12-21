@@ -2,7 +2,7 @@
   'use strict';
   class NpmStarter {
     constructor(option) {
-      if(console) {
+      if(global.console) {
         console.log('Thanks, world!');
       }
     }
