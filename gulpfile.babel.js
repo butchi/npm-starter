@@ -23,25 +23,25 @@ gulp.task('browserify', () => {
     .transform(babelify)
     .bundle()
     .pipe(source('script.js'))
-    .pipe(gulp.dest(`${DEST}/js`))
+    .pipe(gulp.dest(`${DEST}`))
   ;
 });
 
 gulp.task('minify', () => {
-  return gulp.src(`${DEST}/js/script.js`)
+  return gulp.src(`${DEST}/script.js`)
     .pipe(uglify({}))
     .pipe(rename('script.min.js'))
-    .pipe(gulp.dest(`${DEST}/js`))
+    .pipe(gulp.dest(`${DEST}`))
   ;
 });
 
 gulp.task('deco', () => {
-  return gulp.src(`${DEST}/js/script.js`)
+  return gulp.src(`${DEST}/script.js`)
     .pipe(decodecode({
       decoArr: ['b', 'u', 't', 'c', 'h', 'i'],
     }))
     .pipe(rename('script.deco.js'))
-    .pipe(gulp.dest(`${DEST}/js`))
+    .pipe(gulp.dest(`${DEST}`))
     .pipe(gulp.dest(`${HTDOCS}/js/lib`))
   ;
 });
