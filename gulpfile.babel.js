@@ -61,6 +61,8 @@ gulp.task('browser-sync' , () => {
   watch([`${SRC}/*.js`], gulp.series('js', browserSync.reload));
 });
 
+gulp.task('serve', gulp.series('browser-sync'));
+
 
 gulp.task('build', gulp.series('js'));
-gulp.task('default', gulp.series('js'));
+gulp.task('default', gulp.series('build', 'serve'));
