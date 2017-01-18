@@ -13,34 +13,35 @@ import watch from 'gulp-watch';
 
 
 // const
+const APP = 'script';
 const SRC = './src';
 const HTDOCS = './docs';
 const DEST = './dist';
 
 
 gulp.task('browserify', () => {
-  return browserify(`${SRC}/script.js`)
+  return browserify(`${SRC}/${APP}.js`)
     .transform(babelify)
     .bundle()
-    .pipe(source('script.js'))
+    .pipe(source(`${APP}.js`))
     .pipe(gulp.dest(`${DEST}`))
   ;
 });
 
 gulp.task('minify', () => {
-  return gulp.src(`${DEST}/script.js`)
+  return gulp.src(`${DEST}/${APP}.js`)
     .pipe(uglify({}))
-    .pipe(rename('script.min.js'))
+    .pipe(rename(`${APP}.min.js`))
     .pipe(gulp.dest(`${DEST}`))
   ;
 });
 
 gulp.task('deco', () => {
-  return gulp.src(`${DEST}/script.js`)
+  return gulp.src(`${DEST}/${APP}.js`)
     .pipe(decodecode({
       decoArr: ['b', 'u', 't', 'c', 'h', 'i'],
     }))
-    .pipe(rename('script.deco.js'))
+    .pipe(rename(`${APP}.deco.js`))
     .pipe(gulp.dest(`${DEST}`))
     .pipe(gulp.dest(`${HTDOCS}/js/lib`))
   ;
