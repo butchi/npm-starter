@@ -59,7 +59,7 @@ gulp.task('browser-sync' , () => {
     ghostMode: false,
   });
 
-  watch([`${SRC}/*.js`], gulp.series('js', browserSync.reload));
+  watch([`${SRC}/**/*.js`], gulp.series('js', browserSync.reload));
 });
 
 gulp.task('serve', gulp.series('browser-sync'));
