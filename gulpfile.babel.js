@@ -30,7 +30,9 @@ gulp.task('browserify', () => {
 
 gulp.task('minify', () => {
   return gulp.src(`${DEST}/${APP}.js`)
-    .pipe(uglify({}))
+    .pipe(uglify({
+      preserveComments: 'license',
+    }))
     .pipe(rename(`${APP}.min.js`))
     .pipe(gulp.dest(`${DEST}`))
   ;
@@ -39,6 +41,7 @@ gulp.task('minify', () => {
 gulp.task('deco', () => {
   return gulp.src(`${DEST}/${APP}.js`)
     .pipe(decodecode({
+      preserveComments: 'license',
       decoArr: ['b', 'u', 't', 'c', 'h', 'i'],
     }))
     .pipe(rename(`${APP}.deco.js`))
